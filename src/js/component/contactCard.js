@@ -28,10 +28,11 @@ export const ContactCard = () => {
     const HandlerDelete = async (id) => {
         if (contactId) {
             await actions.deleteContact(id);
+            closeModal(); 
+            await actions.getContactsList();
         }
-        closeModal();
-        await actions.getContactsList();
     };
+    
 
     return (
         <div className="container justify-content-center">
@@ -59,7 +60,7 @@ export const ContactCard = () => {
                             <div className="col-md-4">
                                 <div className="d-flex justify-content-end icons">
                                     <Link to={`/updateContact/${contact.id}`}>
-                                        <FontAwesomeIcon icon={faPencilAlt} className="icon2 me-3" onClick={() => handleEdit(contact.id)} />
+                                    <FontAwesomeIcon icon={faPencilAlt} className="icon2 me-3" />
                                     </Link>
                                     <FontAwesomeIcon icon={faTrashAlt} className="icon2 icon2-1" onClick={() => openModal(contact.id)} />
                                 </div>

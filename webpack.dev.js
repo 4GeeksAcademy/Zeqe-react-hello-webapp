@@ -19,14 +19,14 @@ if(process.env.CODESPACE_NAME){
 
 module.exports = merge(common, {
     mode: 'development',
-    devtool: 'cheap-module-source-map',
+    devtool: 'source-map', // Cambiado a 'source-map'
     devServer: {
         port,
         hot: true,
         allowedHosts: "all",
         historyApiFallback: true,
         static: {
-          directory: path.resolve(__dirname, "dist"),
+          directory: path.resolve(__dirname, 'public'), // Cambiado a 'public'
         },
         client: {
           webSocketURL: publicUrl

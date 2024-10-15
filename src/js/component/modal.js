@@ -1,50 +1,26 @@
-import PropTypes from "prop-types";
 import React from "react";
-
+import PropTypes from "prop-types"; 
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 export const Modal = (props) => {
-
     return (
         <>
             {props.showModal && (
-                <div
-                    className="modal show d-block"
-                    tabIndex="-1"
-                    role="dialog"
-                    style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
-                >
-                    <div className="modal-dialog">
+                <div className="modal fade show" style={{ display: "block" }} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Are you sure?</h5>
-                                <button
-                                    type="button"
-                                    className="btn-close"
-                                    onClick={props.handlerClose}
-                                    aria-label="Close"
-                                ></button>
+                                <h5 className="modal-title" id="exampleModalLabel">Eliminar Contacto</h5>
+                                <button type="button" className="close" aria-label="Close" onClick={props.handlerClose}>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                             <div className="modal-body">
-                                <p>
-                                    Are you sure REALLY ? Ok..
-                                </p>
+                                <p>¿Estás seguro de que deseas eliminar este contacto?</p>
                             </div>
                             <div className="modal-footer">
-
-                                <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                    onClick={props.handlerClose}
-                                >
-                                    (T_T)
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    onClick={props.handlerDelete}
-                                >
-                                    :D
-                                </button>
+                                <button type="button" className="btn btn-secondary" onClick={props.handlerClose}>Cancelar</button>
+                                <button type="button" className="btn btn-danger" onClick={props.handlerDelete}>Eliminar</button>
                             </div>
                         </div>
                     </div>
@@ -52,10 +28,10 @@ export const Modal = (props) => {
             )}
         </>
     );
-}
+};
 
 Modal.propTypes = {
-    showmodal: PropTypes.bool,
-    handlerClose: PropTypes.func,
-    handlerDelete: PropTypes.func,
+    showModal: PropTypes.bool.isRequired,
+    handlerClose: PropTypes.func.isRequired,
+    handlerDelete: PropTypes.func.isRequired,
 };
