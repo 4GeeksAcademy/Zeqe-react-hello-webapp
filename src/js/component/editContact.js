@@ -15,7 +15,6 @@ export const EditContact = () => {
     });
 
     useEffect(() => {
-        // Buscar el contacto en el store por su id y establecerlo en el estado local
         const contactToEdit = store.contacts.find(contact => contact.id === parseInt(id));
         if (contactToEdit) {
             setContact(contactToEdit);
@@ -28,9 +27,8 @@ export const EditContact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Llamar a la acción de editar el contacto
         await actions.editContact(id, contact);
-        navigate("/"); // Redirigir a la página de inicio
+        navigate("/"); 
     };
 
     return (
