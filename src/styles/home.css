@@ -29,3 +29,6 @@ img {
 .container h1 {
     font-weight: 600;
 }
+.modal-footer button {
+    font-weight: 500;
+}

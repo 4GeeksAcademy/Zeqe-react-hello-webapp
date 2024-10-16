@@ -27,7 +27,7 @@ export const Modal = (props) => {
                                 <button
                                     className="btn btn-secondary"
                                     onClick={props.handlerDelete}>
-                                    Yes Baby!
+                                    git Yes Baby!
                                 </button>
                             </div>
                         </div>
@@ -43,3 +43,4 @@ Modal.propTypes = {
     handlerClose: PropTypes.func.isRequired,
     handlerDelete: PropTypes.func.isRequired,
 };
+
