@@ -26,3 +26,6 @@ img {
 .icons {
     min-width: none;
 }
+.container h1 {
+    font-weight: 600;
+}
