@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 
 export const FormNewContact = () => {
     const { actions, store } = useContext(Context);
-    const [fullName, setfullName] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
@@ -18,7 +18,7 @@ export const FormNewContact = () => {
         if (contactId) {
             let contacto = store.contacts.find((contact) => contact.id == contactId)
             setCurrentContact(contacto)
-            setfullName(contacto.name)
+            setName(contacto.name)
             setEmail(contacto.email)
             setPhone(contacto.phone)
             setAddress(contacto.address)
@@ -28,17 +28,17 @@ export const FormNewContact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (fullName === "") {
+        if (name === "") {
             console.log("contacto en blanco")
             return
         }
         if (contactId) {
-            await actions.updateContact(contactId, fullName, phone, email, address);
+            await actions.editContact(contactId, name, phone, email, address);
         }
         else {
-            await actions.createNewContact({ fullName, phone, email, address });
+            await actions.createNewContact({ name, phone, email, address });
             setCurrentContact("")
-            setfullName("")
+            setName("")
             setEmail("")
             setPhone("")
             setAddress("")
@@ -67,8 +67,8 @@ export const FormNewContact = () => {
                             className="htmlm-control w-100"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
-                            value={fullName}
-                            onChange={(e) => setfullName(e.target.value)}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                     </div>
                     <div className="mb-3">

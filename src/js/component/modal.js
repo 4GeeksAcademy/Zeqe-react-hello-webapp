@@ -19,8 +19,17 @@ export const Modal = (props) => {
                                 <p>¿Estás seguro de que deseas eliminar este contacto?</p>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={props.handlerClose}>Cancelar</button>
-                                <button type="button" className="btn btn-danger" onClick={props.handlerDelete}>Eliminar</button>
+                            <button 
+                                className="btn btn-danger" 
+                                onClick={() => actions.handleDelete(contactId)}>
+                                Confirmar eliminación
+                            </button>
+                            <button 
+                                className="btn btn-secondary" 
+                                onClick={() => closeModal()}>
+                                Cancelar
+                            </button>
+
                             </div>
                         </div>
                     </div>

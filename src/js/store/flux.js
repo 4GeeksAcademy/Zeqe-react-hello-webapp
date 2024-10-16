@@ -6,22 +6,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			getContactsList: async () => {
 				const store = getStore();
-				const agendaSlug = 'ezebellino'; // Tu agenda de usuario
+				const agendaSlug = 'ezebellino'; 
 				
 				try {
-					// Petición para obtener la lista de contactos
 					let resp = await fetch(`https://playground.4geeks.com/contact/agendas/${agendaSlug}/contacts`, {
 						method: "GET",
 						headers: {
-							"Content-Type": "application/json", // Asegúrate que esté bien escrito
+							"Content-Type": "application/json", 
 						}
 					});
 			
-					// Si la respuesta es 404, la agenda no existe, entonces la creamos
 					if (resp.status === 404) {
 						console.log("La agenda no existe. Creando nueva agenda...");
 						
-						// Crear la agenda
 						let createAgendaResp = await fetch(`https://playground.4geeks.com/contact/agendas/${agendaSlug}`, {
 							method: "POST",
 							headers: {
@@ -43,7 +40,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					}
 			
-					// Si la respuesta es exitosa, actualizamos los contactos en el store
 					if (resp.ok) {
 						let dataContacts = await resp.json();
 						console.log({ dataContacts });
@@ -56,29 +52,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
-			handleSubmit: async (e) => {
-				e.preventDefault();
-
-				const store = getStore(); // Obtén el store para trabajar con él
-				const { fullName, email, address, phone } = store; // Asegúrate de que estas propiedades existan en el store o vengan del formulario
-
+			createNewContact: async ({ name, email, address, phone }) => {
 				const newContact = {
-					name: fullName, 
+					name: name, 
 					email: email,
 					agenda_slug: 'ezebellino', 
 					address: address,
 					phone: phone
 				};
-
+			
 				try {
-					const response = await fetch('https://playground.4geeks.com/contact/ezebellino/contact', {
+					const response = await fetch('https://playground.4geeks.com/contact/agendas/ezebellino/contacts', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
 						},
 						body: JSON.stringify(newContact)
 					});
-
+			
 					if (response.ok) {
 						const addedContact = await response.json();
 						const store = getStore();
@@ -91,10 +82,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error:", error);
 				}
 			},
+			
 
 			handleDelete: async (contactId) => {
 				try {
-					const response = await fetch(`https://playground.4geeks.com/contact/agendas/ezebellino/${contactId}`, {
+					const response = await fetch(`https://playground.4geeks.com/contact/agendas/ezebellino/contacts/${contactId}`, {
 						method: 'DELETE',
 					});
 
@@ -108,7 +100,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error("Error:", error);
 				}
-			}
+			},
+			editContact: async (contactId, updatedContact) => {
+				try {
+					const response = await fetch(`https://playground.4geeks.com/contact/agendas/ezebellino/contacts/${contactId}`, {
+						method: 'PUT', 
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(updatedContact) 
+					});
+			
+					if (!response.ok) {
+						throw new Error("Failed to update the contact");
+					}
+			
+					const updatedContactData = await response.json();
+					const store = getStore();
+					setStore({
+						contacts: store.contacts.map(contact =>
+							contact.id === contactId ? updatedContactData : contact
+						)
+					});
+					console.log("Contacto actualizado", updatedContactData);
+				} catch (error) {
+					console.error("Error updating contact:", error);
+				}
+			}			
+			
 		},
 	};
 };

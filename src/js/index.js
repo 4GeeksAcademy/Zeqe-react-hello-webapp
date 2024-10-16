@@ -5,5 +5,5 @@ import "../styles/demo.css";
 import "../styles/home.css";
 import Layout from './layout.js';
 
-const root = createRoot(document.getElementById("app")); // Cambiado de querySelector a getElementById
+const root = createRoot(document.getElementById("app")); 
 root.render(<Layout />);
