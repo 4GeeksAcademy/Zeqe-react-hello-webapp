@@ -74,7 +74,7 @@ export const ContactCard = () => {
                     </div>
                 )}
             </div>
-            <Modal showModal={showModal} handlerClose={closeModal} handlerDelete={() => { HandlerDelete(contactId) }} />
+            <Modal showModal={showModal} handlerClose={closeModal} handlerDelete={() => HandlerDelete(contactId) } />
         </div>
 
     )

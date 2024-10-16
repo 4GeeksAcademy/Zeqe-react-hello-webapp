@@ -11,7 +11,7 @@ export const Modal = (props) => {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Eliminar Contacto</h5>
-                                <button type="button" className="close" aria-label="Close" onClick={props.handlerClose}>
+                                <button type="button" className="close close-btn" aria-label="Close" onClick={props.handlerClose}>
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -19,17 +19,16 @@ export const Modal = (props) => {
                                 <p>¿Estás seguro de que deseas eliminar este contacto?</p>
                             </div>
                             <div className="modal-footer">
-                            <button 
-                                className="btn btn-danger" 
-                                onClick={() => actions.handleDelete(contactId)}>
-                                Confirmar eliminación
-                            </button>
-                            <button 
-                                className="btn btn-secondary" 
-                                onClick={() => closeModal()}>
-                                Cancelar
-                            </button>
-
+                                <button 
+                                    className="btn btn-danger" 
+                                    onClick={props.handlerDelete}>
+                                    Confirmar eliminación
+                                </button>
+                                <button 
+                                    className="btn btn-secondary" 
+                                    onClick={props.handlerClose}>
+                                    Cancelar
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -126,8 +126,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error("Error updating contact:", error);
 				}
-			}			
-			
+			}				
 		},
 	};
 };
