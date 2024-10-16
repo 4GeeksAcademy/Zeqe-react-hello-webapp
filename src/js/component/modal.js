@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types"; 
-import "bootstrap/dist/css/bootstrap.min.css"; 
+import PropTypes from "prop-types";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Modal = (props) => {
     return (
@@ -19,15 +19,15 @@ export const Modal = (props) => {
                                 <p>¿Estás seguro de que deseas eliminar este contacto?</p>
                             </div>
                             <div className="modal-footer">
-                                <button 
-                                    className="btn btn-primary" 
+                                <button
+                                    className="btn btn-primary"
                                     onClick={props.handlerClose}>
                                     Oh no!
                                 </button>
-                                <button 
-                                    className="btn btn-secondary" 
+                                <button
+                                    className="btn btn-secondary"
                                     onClick={props.handlerDelete}>
-                                    Cancelar
+                                    Yes Baby!
                                 </button>
                             </div>
                         </div>
