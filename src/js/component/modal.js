@@ -20,13 +20,13 @@ export const Modal = (props) => {
                             </div>
                             <div className="modal-footer">
                                 <button 
-                                    className="btn btn-danger" 
-                                    onClick={props.handlerDelete}>
-                                    Confirmar eliminación
+                                    className="btn btn-primary" 
+                                    onClick={props.handlerClose}>
+                                    Oh no!
                                 </button>
                                 <button 
                                     className="btn btn-secondary" 
-                                    onClick={props.handlerClose}>
+                                    onClick={props.handlerDelete}>
                                     Cancelar
                                 </button>
                             </div>
