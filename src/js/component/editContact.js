@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const EditContact = () => {
@@ -79,7 +79,12 @@ export const EditContact = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" className="btn btn-primary w-100">Guardar Cambios</button>
+                <div>
+                    <Link to="/home">
+                        <button type="button" className="btn btn-link p-0">Volver a la agenda!</button>
+                    </Link>
+                </div>
             </form>
         </div>
     );
