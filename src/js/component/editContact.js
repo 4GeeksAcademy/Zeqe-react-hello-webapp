@@ -28,7 +28,7 @@ export const EditContact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await actions.editContact(id, contact);
-        navigate("/"); 
+        navigate("/"); // Redirige a la página principal (o a donde desees)
     };
 
     return (

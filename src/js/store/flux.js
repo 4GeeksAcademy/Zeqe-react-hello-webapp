@@ -114,12 +114,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (!response.ok) {
 						throw new Error("Failed to update the contact");
 					}
-			
 					const updatedContactData = await response.json();
 					const store = getStore();
 					setStore({
 						contacts: store.contacts.map(contact =>
-							contact.id === contactId ? updatedContactData : contact
+							contact.id === parseInt(contactId) ? updatedContactData : contact
 						)
 					});
 					console.log("Contacto actualizado", updatedContactData);

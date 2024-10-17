@@ -27,7 +27,7 @@ export const Modal = (props) => {
                                 <button
                                     className="btn btn-secondary"
                                     onClick={props.handlerDelete}>
-                                    git Yes Baby!
+                                    Yes Baby!
                                 </button>
                             </div>
                         </div>
